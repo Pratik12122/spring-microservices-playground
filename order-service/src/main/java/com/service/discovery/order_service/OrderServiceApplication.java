@@ -22,6 +22,9 @@ public class OrderServiceApplication {
 	@Bean
 	@LoadBalanced
 	public RestTemplate restTemplate() {
+		var factory = new SimpleClientHttpRequestFactory();
+		factory.setConnectTimeout(Duration.ofSeconds(5));
+		factory.setReadTimeout(Duration.ofSeconds(5));
 		return new RestTemplate();
 	}
 
